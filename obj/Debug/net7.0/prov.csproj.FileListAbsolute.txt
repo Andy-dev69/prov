@@ -1,0 +1,14 @@
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\bin\Debug\net7.0\prov.exe
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\bin\Debug\net7.0\prov.deps.json
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\bin\Debug\net7.0\prov.runtimeconfig.json
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\bin\Debug\net7.0\prov.dll
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\bin\Debug\net7.0\prov.pdb
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.AssemblyInfoInputs.cache
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.AssemblyInfo.cs
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.csproj.CoreCompileInputs.cache
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.dll
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\refint\prov.dll
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.pdb
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\prov.genruntimeconfig.cache
+C:\Users\marrioandrei.gheorg\OneDrive - Academedia\Desktop\prov\obj\Debug\net7.0\ref\prov.dll
