@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 
 namespace prov
 {
@@ -8,16 +12,76 @@ namespace prov
     {
         static void Main(string[] args)
         {
-            List<string> Abilities = new List<string>();
-            Abilities.Add("Test");
-            Superman test = new Superman("Superman", 25, "Krypton", Abilities, 100);
-            Flash test2 = new Flash("Superman", 30, "Krypton", Abilities, 80);
-            // Console.WriteLine($"Origin: {test.GetOrigin()}");
-            List<int> blabla = new List<int>();
+            // Frågar användare hur många bilar hen vill skapa.
+            Console.Write("Hur många bilar ska skapas?: ");
+            int carsAmount = 0;
+            // En while loop som kollar att användaren alltid stoppar in rätt grejer.
+            while (!int.TryParse(Console.ReadLine(), out carsAmount))
+            {
+                Console.Clear();
+                Console.WriteLine("Felaktigt input!");
+                Console.Write("Hur många bilar ska skapas?: ");
+            }
 
-            blabla.Add(test.GetAge());
-            blabla.Add(test2.GetAge());
-            CategoriseBy("power", blabla);
+            List<Car> cars = new List<Car>();
+
+            // For loop som lägger till all objekt i en lista
+            for (int i = 0; i < carsAmount; i++)
+            {
+                cars.Add(new Car());
+            }
+            // En for each loop som kollar genom alla ebjekt il listan och checkar alla bilar!
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car.Examine());
+            }
+
+            Console.Write("Välj namn: ");
+            string name = Console.ReadLine();
+            Console.WriteLine(name);
+            Console.Clear();
+            Console.WriteLine("Välj kategori: ");
+            Console.WriteLine("1 -> Superman");
+            Console.WriteLine("2 -> Flash");
+            Console.WriteLine("3 -> Hulk");
+            int value = 0;
+            // En while loop som kollar att användaren alltid stoppar in rätt grejer.
+            while (!int.TryParse(Console.ReadLine(), out value) && value < 1 || value > 3)
+            {
+                Console.Clear();
+                Console.WriteLine("Felaktigt input!");
+                Console.WriteLine("Välj kategori: ");
+                Console.WriteLine("1 -> Superman");
+                Console.WriteLine("2 -> Flash");
+                Console.WriteLine("3 -> Hulk");
+            }
+
+            List<string> Abilities = new List<string>();
+
+            switch (value)
+            {
+                case 1:
+                    Superhero superhero = new Superman(name, 25, "Krypton", Abilities, 100);
+                    Console.WriteLine(superhero.GetName());
+                    Console.WriteLine(superhero.GetAge());
+                    Console.WriteLine(superhero.GetOrigin());
+                    Console.WriteLine(superhero.GetPowerLevel(100));
+                    break;
+                case 2:
+                    Superhero superhero2 = new Flash(name, 25, "Krypton", Abilities, 100);
+                    Console.WriteLine(superhero2.GetName());
+                    Console.WriteLine(superhero2.GetAge());
+                    Console.WriteLine(superhero2.GetOrigin());
+                    Console.WriteLine(superhero2.GetPowerLevel(100));
+                    break;
+                case 3:
+                    Superhero superhero3 = new Hulk(name, 25, "Krypton", Abilities, 100);
+                    Console.WriteLine(superhero3.GetName());
+                    Console.WriteLine(superhero3.GetAge());
+                    Console.WriteLine(superhero3.GetOrigin());
+                    Console.WriteLine(superhero3.GetPowerLevel(100));
+                    break;
+            }
         }
 
         public static void CategoriseBy(string category, List<int> data) {
@@ -55,6 +119,10 @@ class Superhero {
 
     public int GetAge() {
         return Age;
+    }
+
+    public string GetName() {
+        return Name;
     }
 
     public string GetPowerLevel(int power) {
@@ -121,5 +189,73 @@ class Hulk : Superhero {
 
     public List<string> GetHulkAbilities() {
         return Abilities;
+    }
+}
+
+class Car
+{
+    public int Pasagers { get; set; } 
+    public int ContrabandAmount { get; set; }
+    public bool AlreadyChecked { get; set; }
+    public Random Generator { get; set; }
+
+    public Car() {
+        Generator = new Random();
+        Pasagers = Generator.Next(1, 5);
+        ContrabandAmount = Generator.Next(0, 5);
+    }
+
+    public bool Examine() {
+        AlreadyChecked = true;
+        if (Pasagers <= 3 && ContrabandAmount == 0)
+        {
+            return false;
+        } else if (ContrabandAmount == 1) {
+            int FindChance = Generator.Next(1, 4);
+            if (FindChance == 1) {
+                return true;
+            }  else {
+                return false;
+            }
+        } else if (ContrabandAmount == 2) {
+            int FindChance = Generator.Next(1, 4);
+            if (FindChance >= 1 && FindChance < 3) {
+                return true;
+            }  else {
+                return false;
+            }
+        } else if (ContrabandAmount == 3) {
+            int FindChance = Generator.Next(1, 4);
+            if (FindChance >= 1 && FindChance <= 3) {
+                return true;
+            }  else {
+                return false;
+            }
+        } else if (ContrabandAmount == 4) {
+            return true;
+        }
+        return true;
+    }
+}
+
+class CleanCar : Car {
+    public int AmountCleanCars { get; set; }
+    public CleanCar() : base() {
+        AmountCleanCars++;
+    }
+
+    public int GetCleanCarsAmount() {
+        return AmountCleanCars;
+    }
+}
+
+class ContrabandCar : Car {
+    public int AmountContrabandCars { get; set; }
+    public ContrabandCar() : base() {
+        AmountContrabandCars++;
+    }
+
+    public int GetAmountContrabandCars() {
+        return AmountContrabandCars;
     }
 }
